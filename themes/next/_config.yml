@@ -230,7 +230,7 @@ post_meta:
 # Dependencies: https://github.com/willin/hexo-wordcount
 post_wordcount:
   item_text: true
-  wordcount: false
+  wordcount: true
   min2read: true
   totalcount: true
   separated_meta: true
@@ -368,9 +368,9 @@ disqus:
 
 # changyan
 changyan:
-  enable: false
-  appid:
-  appkey:
+  enable: true
+  appid: cythQ1wlq
+  appkey: ca550346f8a219358c3f82f525e918c2
 
 
 # Valine.
