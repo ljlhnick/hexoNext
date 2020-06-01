@@ -4,11 +4,11 @@
 
 # Site
 title: ljlhnick
-subtitle: ''
-description: ''
+subtitle: '仙女驻凡博客'
+description: '女孩子要稍微做点坏事，然后老天爷一生气，就会给你:发个小伙'
 keywords:
 author: ljlhnick
-language: zh
+language: zh-Hans
 timezone: ''
 
 # URL
@@ -95,7 +95,22 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# 搜索
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+
+# hexo-tag-cloud
+tag_cloud:
+    textFont: Trebuchet MS, Helvetica
+    textColor: '#333'
+    textHeight: 25
+    outlineColor: '#E2E1D1'
+    maxSpeed: 0.1 
