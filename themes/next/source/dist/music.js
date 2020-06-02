@@ -38,6 +38,12 @@ const ap = new APlayer({
         artist: '李上安',
         url: 'http://m7.music.126.net/20200601143851/21ea8401d598aac9c3f72980af3e2bcc/ymusic/2c20/031e/a0e2/67623e740b6b8a11b23c3ba10bda29d8.mp3',
         cover: 'https://p3.music.126.net/8JrYu0edGVkDqITQfA0cig==/109951162920511105.jpg?param=300y300',
+      },
+      {
+        name: "像鱼",
+        artist: '王贰浪',
+        url: 'http://m7.music.126.net/20200602104216/505cada2ca7191675ce3466fb5f816ee/ymusic/555b/545f/005f/b193f4fbc9c5c3a94eb17531a71fbc26.mp3',
+        cover: 'https://p3.music.126.net/ejEPGN6ulPSgCBXGq7dgqw==/109951163720047382.jpg?param=300y300',
       }
     ]
 });

@@ -4,12 +4,9 @@ categories:
   - Vue
   - Jest
 tags:
-  - API测试
   - nodejs
   - Vue
   - React
-  - JS
-  - PostMan
 ---
 <!--more-->
 ## 技术方案
