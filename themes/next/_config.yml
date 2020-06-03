@@ -94,10 +94,11 @@ index_with_subtitle: false
 menu:
   home: /|| home
   about: /about/|| user
-  tags: /tags/|| tags
+  # tags: /tags/|| tags
   categories: /categories/|| th
   archives: /archives/|| archive
-  schedule: /schedule/|| calendar
+  guestbook: /guestbook/|| book
+  links: /links/|| link
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -148,8 +149,9 @@ links_icon: link
 links_title: Links
 links_layout: block
 #links_layout: inline
-links:
-  小小天地: https://blog.csdn.net/ljlhnick/category_9380294.html
+# links:
+#   小小天地: https://blog.csdn.net/ljlhnick/category_9380294.html
+#   博客大神: https://godweiyang.com
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -810,3 +812,26 @@ images: images
 
 # Theme version
 version: 5.1.4
+
+
+mylinks:
+
+- nickname: ljlhnick  
+  avatar: https://ljlhnick.github.io/images/avatar.jpg
+  site: https://github.com/ljlhnick  
+  info: 正义都能迟到，为什么我上班不能迟到?。  
+  
+- nickname: Pwner
+  avatar: https://www.safeinfo.me/images/avatar.gif 
+  site: https://pwner.cn
+  info: 能全力以赴不尽力而为
+
+- nickname: leaface  #友链名称
+  avatar: https://www.liaofuzhan.com/images/beichen.png  #友链头像
+  site: https://www.liaofuzhan.com/  #友链地址
+  info: Stay Hungry Stay Foolish  #友链说明
+  
+- nickname: godweiyang
+  avatar: https://godweiyang.com/medias/avatars/avatar.jpg
+  site: https://godweiyang.com
+  info: 公众号【算法码上来】，分享深度学习与NLP算法
