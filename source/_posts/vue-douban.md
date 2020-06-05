@@ -15,8 +15,6 @@ iview UI 使用了Menu， Tabs，Page， Spin， Button(ButtonGroup)，Divider,B
 <BackTop></BackTop> in  movie and book.vue on Spin
 vuex: movie.js  book.js 
 
-你好！ 这是你第一次使用 **Markdown编辑器** 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。
-
 ## 技术方案
 github地址： https://github.com/ljlhnick/vueDouban
 采用的技术支持：
@@ -26,7 +24,6 @@ github地址： https://github.com/ljlhnick/vueDouban
  4.  **vuex** 进行数据的状态管理；
  5. 使用axios与后台进行接口数据的交互；
  6. 采用 **test**和 **E2E** 
- [^1]: [mermaid语法说明](https://mermaidjs.github.io/)
 
 ## 模块划分
 
@@ -46,27 +43,28 @@ Book
 ![书籍tab切换](https://img-blog.csdnimg.cn/20200430173655431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
 ![书籍详情](https://img-blog.csdnimg.cn/20200430173741476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
 
-## 测试
-```
-// A code block
-var foo = 'bar';
-```
-unit 截图
+## vue ui 上 unit 截图
 ![unit单元测试](https://img-blog.csdnimg.cn/20200430173337642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
 E2E
 ![黑盒测试](https://img-blog.csdnimg.cn/2020043017345324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
+
 ## 单元测试覆盖率之jest测试
 安装依赖包： jest、vue-jest、bebel-jest， chai（断言库）
 配置图：(jest.conf.js)
 ![jest.conf.js](https://img-blog.csdnimg.cn/20200523172121918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
 在package.json中新增jest命令
 ![jest命令](https://img-blog.csdnimg.cn/20200523172358292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
+
+## 测试用例编写
 编写.spec.js/.js测试文件
 ```
 import { expect } from 'chai';
+import fetch from "node-fetch";
 import Vue from "vue";
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Index from '@/components/Index.vue';
-import IndexStore from "../../src/store/index.js";
+import Vuex from 'vuex';
+import { moduleA } from "../../src/store/index.js";
 
 describe('Index.vue', () => {
   //检查原始组件选项
@@ -96,6 +94,50 @@ describe('Index.vue', () => {
     expect(Index.computed.products).length === 4;
     expect(vm.$el.products).length > 0;
   })
+
+  //测试getters
+  it('check getters saleProducts', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const vuexStore = new Vuex.Store(moduleA);
+    vuexStore.getters.saleProducts;
+    expect(vuexStore.state.products[1].price).to.eql(120);
+  })
+
+  //测试mutataions
+  it('check mutataions minuPrice', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const vuexStore = new Vuex.Store(moduleA);
+    vuexStore.commit('minuPrice', 2);
+    expect(vuexStore.state.products).length === 4;
+  })
+
+  it('check mutataions setActiveMenu', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const vuexStore = new Vuex.Store(moduleA);
+    vuexStore.commit('setActiveMenu', '电影');
+    expect(vuexStore.state.activeMenu).to.eql("电影");
+  })
+
+  //测试action
+  it('check minuPriceAsync', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const vuexStore = new Vuex.Store(moduleA);
+    vuexStore.dispatch('minuPriceAsync', 5);
+    setTimeout(() => {
+      vuexStore.commit('minuPrice', 5);
+      expect(vuexStore.state.products[0].price).to.eql(246);
+      done(); 
+    }, 2000);
+  })
+});
 ```
 单元测试覆盖率截图（点开coverage下的一个html文件）
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200528135358486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
@@ -106,7 +148,7 @@ __VUE_DEVTOOLS_GLOBAL_HOOK__.store查看store，有以下属性
 ## 路由拦截
  beforeRouteEnter (to, from, next) {
     // 在渲染该组件的对应路由被 confirm 前调用
-    // 不！能！获取组件实例 `this`
+    // 不能获取组件实例 `this`
     // 因为当钩子执行前，组件实例还没被创建
   },
   beforeRouteUpdate (to, from, next) {
