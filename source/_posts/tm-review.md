@@ -51,6 +51,12 @@ $.when(ajax1, ajax2).done(resulit => {})
 常用API
 ![deferred](https://images0.cnblogs.com/blog/453211/201308/17232146-f0b38ea700354dba9b68bdd2e550664b.jpg)
 
+## lodash debounce防抖动函数
+._debounce(func, [wait=0], [option={}])
+```
+jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+```
+
 ## 逻辑简化，善用map
 ```
 this.allTechnicianList = [];
