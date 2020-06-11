@@ -1,29 +1,37 @@
 ---
 title: vue测试
-categories: 
+categories:
   - jest
 tags:
-  - API测试
+  - 单元测试
 ---
+
 <!--more-->
+
 [原文链接](https://juejin.im/post/5e18863df265da3e1932cddc#heading-4)
 [store](https://blog.csdn.net/tonylua/article/details/103750356)
+
 ## 测试类型
+
 三类测试：单元测试、集成测试、端到端测试
 单元测试：单独使用在单个代码单元（类、函数）
 集成测试：检查多个单元是否协同（组件层次结构、组件+存储）
 端到端：外部观察浏览器上的交互
 
 ## 单元测试
+
 descible：围绕测试单元组件测试用例: 可以是类、函数、组件等
 it： 测试用例
-mocha没有断言库，选择chai
+mocha 没有断言库，选择 chai
 
-## shallowMount与mount区别
+## shallowMount 与 mount 区别
+
 前者不会渲染子组件
 
 ## 组件交互
+
 ### 组件实例交互
+
 ```
 import {shallowMount} from '@vue/test-utils';
 import {expect} from 'chai';
@@ -58,7 +66,9 @@ describe('Movie component', () => {
     })
 })
 ```
-### DOM交互
+
+### DOM 交互
+
 ```
 it('should modify the text after clicking the button', () => {
   const wrapper = shallowMount(Footer);
@@ -71,7 +81,9 @@ it('should modify the text after clicking the button', () => {
 ```
 
 ### 父子组件交互
-用propsData设置输入的props，触发事件通过调用emitted方法，得到一个对象，key是事件名，value是事件参数数组
+
+用 propsData 设置输入的 props，触发事件通过调用 emitted 方法，得到一个对象，key 是事件名，value 是事件参数数组
+
 ```
 it('should handle interactions', () => {
   const wrapper = shallowMount(Footer, {
@@ -87,7 +99,8 @@ it('should handle interactions', () => {
 });
 ```
 
-## store集成
+## store 集成
+
 ```
 import { expect } from 'chai';
 import fetch from "node-fetch";
@@ -137,12 +150,13 @@ describe('Index.vue', () => {
     setTimeout(() => {
       vuexStore.commit('minuPrice', 5);
       expect(vuexStore.state.products[0].price).to.eql(246);
-      done(); 
+      done();
     }, 2000);
   })
 ```
 
 ## 路由
+
 ```
 import {shallowMount, createLocalVue, mount} from '@vue/test-utils';
 import {expect} from 'chai';

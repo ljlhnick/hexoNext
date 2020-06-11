@@ -1,20 +1,26 @@
 ---
 title: 基于vue框架以及网易云API实现的小项目
-categories: 
+categories:
   - Vue
-  - Jest
 tags:
   - nodejs
   - Vue
   - React
 ---
+
 <!--more-->
+
 ## 技术方案
-github地址： **https://github.com/ljlhnick/vue-wangyiyun**  喜欢欢迎点个start，支持下我
-技术方案：vue+vue-router+axios+typeScript+element-ui+vue-property-decorator（class方式写组件）
+
+github 地址： **https://github.com/ljlhnick/vue-wangyiyun** 喜欢欢迎点个 start，支持下我
+技术方案：vue+vue-router+axios+typeScript+element-ui+vue-property-decorator（class 方式写组件）
+
 ## 模块划分
+
 歌单列表，歌单，分页，播放详情，个人资料提交
-## 代码class编程
+
+## 代码 class 编程
+
 ```
 <script lang="ts">
 import { formatDate } from "./date.js";
@@ -73,7 +79,9 @@ export default class SongFirst extends Vue {
 }
 </script>
 ```
+
 ## 功能图
+
 主页
 ![主页](https://img-blog.csdnimg.cn/2020052317382318.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbGhuaWNr,size_16,color_FFFFFF,t_70)
 歌单
