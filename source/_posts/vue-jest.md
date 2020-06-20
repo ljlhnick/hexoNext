@@ -8,7 +8,8 @@ tags:
 
 <!--more-->
 
-[原文链接](https://juejin.im/post/5e18863df265da3e1932cddc#heading-4)
+[jest+vue-test-utils](https://juejin.im/post/5e18863df265da3e1932cddc#heading-4)
+[vue jest 单元测试](https://juejin.im/post/5e18863df265da3e1932cddc#heading-4)
 [store](https://blog.csdn.net/tonylua/article/details/103750356)
 
 ## 测试类型

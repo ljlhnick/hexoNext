@@ -74,3 +74,49 @@ js 通过模拟真实服务器端响应，不必等待接口，降低联调难�
 选择 host 含指定 host 的 HTTP 请求
 
 ## 跨域
+
+JSON 跨域只能实现 get 请求，因为 srcipt 请求 src 所指向的 js 脚本是 get 方式。
+
+### JSONP 跨域
+
+原理：ajax 因同源策越限制，不可跨域请求，而 script 标签中的 src 可以跨域请求 js 脚本。利用此特性，服务器返回可执行的某个函数的 js 代码，在 src 中调用，就实现了跨域。
+
+代码实现
+
+```
+<script type="text/javascript">
+	$(document).ready(function(){
+        function jsonhandle(data){
+            alert("age:" + data.age + "name:" + data.name);
+        }
+		var url = "http://www.practice-zhao.com/student.php?id=1&callback=jsonhandle";
+		var obj = $('<script><\/script>');
+		obj.attr("src",url);
+		$("body").append(obj);
+	});
+</script>
+```
+
+jq 提供便于使用 jsonp 的方式
+
+```
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			type : "get",
+			async: false,
+			url : "http://www.practice-zhao.com/student.php?id=1",
+			dataType: "jsonp",
+			jsonpCallback: "jsonhandle",//要执行的回调函数
+			success : function(data) {
+				alert("age:" + data.age + "name:" + data.name);
+			}
+
+		});
+	});
+</script>
+```
+
+### CORS 跨域
+
+需要浏览器和服务器支持，浏览器一旦发现 ajax 请求跨域，就会自动添加一些附加头信息，关键是服务器要实现 CORS 接口。
